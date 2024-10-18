@@ -1,13 +1,20 @@
 import Question from "../Question/Question";
 import css from "./Quiz.module.css";
 
-const Quiz = () => {
+const Quiz = ({ currentIndex, setCurrentIndex }) => {
+  const handleClick = () => {
+    if (currentIndex < 9) {
+      setCurrentIndex(currentIndex + 1);
+    }
+  };
   return (
     <>
       <div className={css.quiz}>
-        <div className={css.score}>Question 1/10</div>
+        <p className={css.score}>Question {currentIndex + 1}/10</p>
         <Question />
-        <div className={css.nextBtn}>Next</div>
+        <button className={css.nextBtn} onClick={handleClick}>
+          Next
+        </button>
       </div>
     </>
   );
